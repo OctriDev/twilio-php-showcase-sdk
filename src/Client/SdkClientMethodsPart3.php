@@ -315,7 +315,8 @@ trait SdkClientMethodsPart3
             return false;
         }
 
-        return match ($scheme) {"accountSid_authToken" => $auth->accountSidAuthToken !== null,default => false,
+        return match ($scheme) {
+            "accountSid_authToken" => $auth->accountSidAuthToken !== null,default => false,
         };
     }
 }

@@ -20,7 +20,8 @@ trait SdkClientMethodsPart4
      * @return list<string>|null
      */
     private static function selectAuthAlternative(string $operationId, ?ClientAuthConfig $auth): ?array
-    {$supported = self::OPERATION_SECURITY[$operationId] ?? null;
+    {
+        $supported = self::OPERATION_SECURITY[$operationId] ?? null;
         if ($supported === null) {
             return null;
         }foreach ($supported as $alternative) {
@@ -34,7 +35,8 @@ trait SdkClientMethodsPart4
             if ($configured) {
                 return $alternative;
             }
-        }return $supported[0];}
+        }return $supported[0];
+    }
 
     /**
      * Whether the chosen alternative asks for this scheme.
@@ -186,7 +188,7 @@ trait SdkClientMethodsPart4
             return [];
         }
         foreach ($form->files as $name) {
-            $file = fn (mixed $data): mixed => is_string($data) ? new SdkUploadFile($data, $name) : $data;
+            $file = fn(mixed $data): mixed => is_string($data) ? new SdkUploadFile($data, $name) : $data;
             if (isset($fields[$name])) {
                 $fields[$name] = is_array($fields[$name]) ? array_map($file, $fields[$name]) : $file($fields[$name]);
             }
