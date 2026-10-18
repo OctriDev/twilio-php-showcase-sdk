@@ -278,7 +278,7 @@ class ApiV2010AccountMessage implements \JsonSerializable
         return new self(
             body: (property_exists($data, "body") ? ($data->body === null ? null : SdkClient::stringValue($data->body)) : SdkNotGiven::Value),
             numSegments: (property_exists($data, "num_segments") ? ($data->num_segments === null ? null : SdkClient::stringValue($data->num_segments)) : SdkNotGiven::Value),
-            direction: (property_exists($data, "direction") ? SdkClient::hydrateStringEnumOrString($data->direction, MessageEnumDirection::class) : SdkNotGiven::Value),
+            direction: (property_exists($data, "direction") && $data->direction !== null ? SdkClient::hydrateStringEnumOrString($data->direction, MessageEnumDirection::class) : SdkNotGiven::Value),
             from: (property_exists($data, "from") ? ($data->from === null ? null : SdkClient::stringValue($data->from)) : SdkNotGiven::Value),
             to: (property_exists($data, "to") ? ($data->to === null ? null : SdkClient::stringValue($data->to)) : SdkNotGiven::Value),
             dateUpdated: (property_exists($data, "date_updated") ? ($data->date_updated === null ? null : SdkClient::stringValue($data->date_updated)) : SdkNotGiven::Value),
@@ -287,7 +287,7 @@ class ApiV2010AccountMessage implements \JsonSerializable
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
             accountSid: (property_exists($data, "account_sid") ? ($data->account_sid === null ? null : SdkClient::stringValue($data->account_sid)) : SdkNotGiven::Value),
             numMedia: (property_exists($data, "num_media") ? ($data->num_media === null ? null : SdkClient::stringValue($data->num_media)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, MessageEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, MessageEnumStatus::class) : SdkNotGiven::Value),
             messagingServiceSid: (property_exists($data, "messaging_service_sid") ? ($data->messaging_service_sid === null ? null : SdkClient::stringValue($data->messaging_service_sid)) : SdkNotGiven::Value),
             sid: (property_exists($data, "sid") ? ($data->sid === null ? null : SdkClient::stringValue($data->sid)) : SdkNotGiven::Value),
             dateSent: (property_exists($data, "date_sent") ? ($data->date_sent === null ? null : SdkClient::stringValue($data->date_sent)) : SdkNotGiven::Value),

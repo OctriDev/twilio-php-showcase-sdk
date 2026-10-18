@@ -9,6 +9,17 @@ namespace octridev_twilio;
 
 trait SdkClientMethodsPart4
 {
+    /** Whether the caller configured the credential this scheme reads. */
+    private static function hasCredential(?ClientAuthConfig $auth, string $scheme): bool
+    {
+        if ($auth === null) {
+            return false;
+        }
+
+        return match ($scheme) {"accountSid_authToken" => $auth->accountSidAuthToken !== null,default => false,
+        };
+    }
+
     /**
      * Chooses the security alternative this call will satisfy.
      *
@@ -319,24 +330,5 @@ trait SdkClientMethodsPart4
         }
         $out .= "--{$boundary}--\r\n";
         return $out;
-    }
-
-    /**
-     * @param list<string> $headers
-     * @return array{status: int, headers: array<string, string>, body: string}
-     */
-    private static function dispatch(string $method, string $url, array $headers, ?string $body, float $timeout): array
-    {
-        $response = self::dispatchOnce($method, $url, $headers, $body, $timeout);
-        for ($hop = 0; $hop < self::MAX_REDIRECTS; $hop++) {
-            $next = self::nextHop($response, $method, $url, $headers);
-            if ($next === null) {
-                break;
-            }
-            [$method, $url, $headers, $keepsBody] = $next;
-            $body = $keepsBody ? $body : null;
-            $response = self::dispatchOnce($method, $url, $headers, $body, $timeout);
-        }
-        return $response;
     }
 }

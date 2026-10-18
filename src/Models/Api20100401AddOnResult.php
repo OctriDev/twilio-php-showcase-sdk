@@ -158,7 +158,7 @@ class ApiV2010AccountRecordingRecordingAddOnResult implements \JsonSerializable
         return new self(
             sid: (property_exists($data, "sid") ? ($data->sid === null ? null : SdkClient::stringValue($data->sid)) : SdkNotGiven::Value),
             accountSid: (property_exists($data, "account_sid") ? ($data->account_sid === null ? null : SdkClient::stringValue($data->account_sid)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, RecordingAddOnResultEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, RecordingAddOnResultEnumStatus::class) : SdkNotGiven::Value),
             addOnSid: (property_exists($data, "add_on_sid") ? ($data->add_on_sid === null ? null : SdkClient::stringValue($data->add_on_sid)) : SdkNotGiven::Value),
             addOnConfigurationSid: (property_exists($data, "add_on_configuration_sid") ? ($data->add_on_configuration_sid === null ? null : SdkClient::stringValue($data->add_on_configuration_sid)) : SdkNotGiven::Value),
             dateCreated: (property_exists($data, "date_created") ? ($data->date_created === null ? null : SdkClient::stringValue($data->date_created)) : SdkNotGiven::Value),

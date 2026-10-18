@@ -187,10 +187,10 @@ class ApiV2010AccountConference implements \JsonSerializable
             friendlyName: (property_exists($data, "friendly_name") ? ($data->friendly_name === null ? null : SdkClient::stringValue($data->friendly_name)) : SdkNotGiven::Value),
             region: (property_exists($data, "region") ? ($data->region === null ? null : SdkClient::stringValue($data->region)) : SdkNotGiven::Value),
             sid: (property_exists($data, "sid") ? ($data->sid === null ? null : SdkClient::stringValue($data->sid)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, ConferenceEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, ConferenceEnumStatus::class) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
             subresourceUris: (property_exists($data, "subresource_uris") ? ($data->subresource_uris === null ? null : SdkClient::stringMapValue($data->subresource_uris)) : SdkNotGiven::Value),
-            reasonConferenceEnded: (property_exists($data, "reason_conference_ended") ? SdkClient::hydrateStringEnumOrString($data->reason_conference_ended, ConferenceEnumReasonConferenceEnded::class) : SdkNotGiven::Value),
+            reasonConferenceEnded: (property_exists($data, "reason_conference_ended") && $data->reason_conference_ended !== null ? SdkClient::hydrateStringEnumOrString($data->reason_conference_ended, ConferenceEnumReasonConferenceEnded::class) : SdkNotGiven::Value),
             callSidEndingConference: (property_exists($data, "call_sid_ending_conference") ? ($data->call_sid_ending_conference === null ? null : SdkClient::stringValue($data->call_sid_ending_conference)) : SdkNotGiven::Value),
         );
     }

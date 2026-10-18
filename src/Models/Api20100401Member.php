@@ -110,9 +110,9 @@ class ApiV2010AccountQueueMember implements \JsonSerializable
         return new self(
             callSid: (property_exists($data, "call_sid") ? ($data->call_sid === null ? null : SdkClient::stringValue($data->call_sid)) : SdkNotGiven::Value),
             dateEnqueued: (property_exists($data, "date_enqueued") ? ($data->date_enqueued === null ? null : SdkClient::stringValue($data->date_enqueued)) : SdkNotGiven::Value),
-            position: (property_exists($data, "position") ? SdkClient::intValue($data->position) : SdkNotGiven::Value),
+            position: (property_exists($data, "position") && $data->position !== null ? SdkClient::intValue($data->position) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
-            waitTime: (property_exists($data, "wait_time") ? SdkClient::intValue($data->wait_time) : SdkNotGiven::Value),
+            waitTime: (property_exists($data, "wait_time") && $data->wait_time !== null ? SdkClient::intValue($data->wait_time) : SdkNotGiven::Value),
             queueSid: (property_exists($data, "queue_sid") ? ($data->queue_sid === null ? null : SdkClient::stringValue($data->queue_sid)) : SdkNotGiven::Value),
         );
     }

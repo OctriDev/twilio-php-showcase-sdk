@@ -145,14 +145,14 @@ class ApiV2010AccountQueue implements \JsonSerializable
     {
         return new self(
             dateUpdated: (property_exists($data, "date_updated") ? ($data->date_updated === null ? null : SdkClient::stringValue($data->date_updated)) : SdkNotGiven::Value),
-            currentSize: (property_exists($data, "current_size") ? SdkClient::intValue($data->current_size) : SdkNotGiven::Value),
+            currentSize: (property_exists($data, "current_size") && $data->current_size !== null ? SdkClient::intValue($data->current_size) : SdkNotGiven::Value),
             friendlyName: (property_exists($data, "friendly_name") ? ($data->friendly_name === null ? null : SdkClient::stringValue($data->friendly_name)) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
             accountSid: (property_exists($data, "account_sid") ? ($data->account_sid === null ? null : SdkClient::stringValue($data->account_sid)) : SdkNotGiven::Value),
-            averageWaitTime: (property_exists($data, "average_wait_time") ? SdkClient::intValue($data->average_wait_time) : SdkNotGiven::Value),
+            averageWaitTime: (property_exists($data, "average_wait_time") && $data->average_wait_time !== null ? SdkClient::intValue($data->average_wait_time) : SdkNotGiven::Value),
             sid: (property_exists($data, "sid") ? ($data->sid === null ? null : SdkClient::stringValue($data->sid)) : SdkNotGiven::Value),
             dateCreated: (property_exists($data, "date_created") ? ($data->date_created === null ? null : SdkClient::stringValue($data->date_created)) : SdkNotGiven::Value),
-            maxSize: (property_exists($data, "max_size") ? SdkClient::intValue($data->max_size) : SdkNotGiven::Value),
+            maxSize: (property_exists($data, "max_size") && $data->max_size !== null ? SdkClient::intValue($data->max_size) : SdkNotGiven::Value),
         );
     }
 }

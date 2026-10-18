@@ -358,7 +358,7 @@ class ApiV2010AccountCall implements \JsonSerializable
             from: (property_exists($data, "from") ? ($data->from === null ? null : SdkClient::stringValue($data->from)) : SdkNotGiven::Value),
             fromFormatted: (property_exists($data, "from_formatted") ? ($data->from_formatted === null ? null : SdkClient::stringValue($data->from_formatted)) : SdkNotGiven::Value),
             phoneNumberSid: (property_exists($data, "phone_number_sid") ? ($data->phone_number_sid === null ? null : SdkClient::stringValue($data->phone_number_sid)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, CallEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, CallEnumStatus::class) : SdkNotGiven::Value),
             startTime: (property_exists($data, "start_time") ? ($data->start_time === null ? null : SdkClient::stringValue($data->start_time)) : SdkNotGiven::Value),
             endTime: (property_exists($data, "end_time") ? ($data->end_time === null ? null : SdkClient::stringValue($data->end_time)) : SdkNotGiven::Value),
             duration: (property_exists($data, "duration") ? ($data->duration === null ? null : SdkClient::stringValue($data->duration)) : SdkNotGiven::Value),

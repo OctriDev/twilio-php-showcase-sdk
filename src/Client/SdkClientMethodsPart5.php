@@ -13,6 +13,25 @@ trait SdkClientMethodsPart5
      * @param list<string> $headers
      * @return array{status: int, headers: array<string, string>, body: string}
      */
+    private static function dispatch(string $method, string $url, array $headers, ?string $body, float $timeout): array
+    {
+        $response = self::dispatchOnce($method, $url, $headers, $body, $timeout);
+        for ($hop = 0; $hop < self::MAX_REDIRECTS; $hop++) {
+            $next = self::nextHop($response, $method, $url, $headers);
+            if ($next === null) {
+                break;
+            }
+            [$method, $url, $headers, $keepsBody] = $next;
+            $body = $keepsBody ? $body : null;
+            $response = self::dispatchOnce($method, $url, $headers, $body, $timeout);
+        }
+        return $response;
+    }
+
+    /**
+     * @param list<string> $headers
+     * @return array{status: int, headers: array<string, string>, body: string}
+     */
     private static function dispatchOnce(string $method, string $url, array $headers, ?string $body, float $timeout): array
     {
         if (function_exists('curl_init')) {
@@ -317,23 +336,5 @@ trait SdkClientMethodsPart5
             $error instanceof SdkValidationError ? $error->field : null,
             $error,
         );
-    }
-
-    private static function decode(string $body, string $decoder, ?string $returnType): mixed
-    {
-        if ($decoder === 'empty') {
-            return null;
-        }
-        if ($decoder === 'bytes' || $decoder === 'text') {
-            return $body;
-        }
-        $decoded = json_decode($body, false, 512, JSON_THROW_ON_ERROR | JSON_BIGINT_AS_STRING);
-        if ($returnType === null) {
-            return $decoded;
-        }
-        if (is_subclass_of($returnType, SdkWireEnum::class)) {
-            return self::hydrateEnum($decoded, $returnType);
-        }
-        return self::hydrateDynamicClass($decoded ?? (object) [], $returnType);
     }
 }

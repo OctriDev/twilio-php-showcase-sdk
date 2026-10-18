@@ -193,9 +193,9 @@ class ApiV2010Account implements \JsonSerializable
             friendlyName: (property_exists($data, "friendly_name") ? ($data->friendly_name === null ? null : SdkClient::stringValue($data->friendly_name)) : SdkNotGiven::Value),
             ownerAccountSid: (property_exists($data, "owner_account_sid") ? ($data->owner_account_sid === null ? null : SdkClient::stringValue($data->owner_account_sid)) : SdkNotGiven::Value),
             sid: (property_exists($data, "sid") ? ($data->sid === null ? null : SdkClient::stringValue($data->sid)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, AccountEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, AccountEnumStatus::class) : SdkNotGiven::Value),
             subresourceUris: (property_exists($data, "subresource_uris") ? ($data->subresource_uris === null ? null : SdkClient::stringMapValue($data->subresource_uris)) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") ? SdkClient::hydrateStringEnumOrString($data->type, AccountEnumType::class) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, AccountEnumType::class) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
         );
     }

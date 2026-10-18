@@ -282,18 +282,29 @@ trait SdkClientMethodsPart2
             return self::hydrateClass($object, $className);
         }
         $lastRejection = null;
+        $lossy = null;
         // A variant no mapping row selects, such as one of two that share a
-        // tag value, is recognised by its shape.
+        // tag value, is recognised by its shape. The first that keeps every key
+        // the payload carries wins: hydration drops keys a variant does not
+        // declare, so GitHub's organization policy conditions read as the
+        // workflow-path variant with the organization gone.
         foreach ($variants as $className) {
             if (in_array($className, $mapping, true)) {
                 continue;
             }
             try {
-                return self::hydrateClass($object, $className);
+                $candidate = self::hydrateClass($object, $className);
             } catch (SdkValidationError|\UnexpectedValueException $error) {
                 $lastRejection = $error;
                 continue;
             }
+            if (self::keepsEveryKey($object, $candidate)) {
+                return $candidate;
+            }
+            $lossy ??= $candidate;
+        }
+        if ($lossy !== null) {
+            return $lossy;
         }
         // A tag no variant is mapped to marks a member this SDK does not know yet.
         if ($unknown !== null && $discriminator !== null && is_string($object->{$discriminator} ?? null)) {
@@ -313,26 +324,17 @@ trait SdkClientMethodsPart2
         throw new \UnexpectedValueException($message, 0, $lastRejection);
     }
 
-    /**
-     * @template T of object
-     * @param class-string<T> $expectedType
-     * @param list<class-string<object>> $variants
-     * @param array<array-key, class-string<object>|\Closure(object): object> $mapping
-     * @param class-string<object>|null $unknown the member a tag no variant is mapped to decodes as
-     * @return T
-     */
-    public static function hydrateUnionAs(
-        mixed $value,
-        string $expectedType,
-        array $variants,
-        ?string $discriminator = null,
-        array $mapping = [],
-        ?string $unknown = null,
-    ): object {
-        $result = self::hydrateUnion($value, $variants, $discriminator, $mapping, $unknown);
-        if (!$result instanceof $expectedType) {
-            throw new \UnexpectedValueException("Hydrated union does not implement {$expectedType}");
+    private static function keepsEveryKey(object $source, object $candidate): bool
+    {
+        $kept = json_decode((string) json_encode($candidate), true);
+        if (!is_array($kept)) {
+            return true;
         }
-        return $result;
+        foreach (array_keys(get_object_vars($source)) as $key) {
+            if (!array_key_exists($key, $kept)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

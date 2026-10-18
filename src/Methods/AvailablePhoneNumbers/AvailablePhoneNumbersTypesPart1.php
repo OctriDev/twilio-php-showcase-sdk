@@ -49,7 +49,7 @@ class ListAvailablePhoneNumbersResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            countries: (property_exists($data, "countries") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ApiV2010AccountAvailablePhoneNumberCountry::class), SdkClient::arrayValue($data->countries))) : SdkNotGiven::Value),
+            countries: (property_exists($data, "countries") && $data->countries !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ApiV2010AccountAvailablePhoneNumberCountry::class), SdkClient::arrayValue($data->countries))) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
         );
     }
@@ -153,15 +153,15 @@ class ListAvailablePhoneNumbersLocalResponse implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            end: (property_exists($data, "end") ? SdkClient::intValue($data->end) : SdkNotGiven::Value),
-            firstPageUri: (property_exists($data, "first_page_uri") ? SdkClient::stringValue($data->first_page_uri) : SdkNotGiven::Value),
+            end: (property_exists($data, "end") && $data->end !== null ? SdkClient::intValue($data->end) : SdkNotGiven::Value),
+            firstPageUri: (property_exists($data, "first_page_uri") && $data->first_page_uri !== null ? SdkClient::stringValue($data->first_page_uri) : SdkNotGiven::Value),
             nextPageUri: (property_exists($data, "next_page_uri") ? ($data->next_page_uri === null ? null : SdkClient::stringValue($data->next_page_uri)) : SdkNotGiven::Value),
-            page: (property_exists($data, "page") ? SdkClient::intValue($data->page) : SdkNotGiven::Value),
-            pageSize: (property_exists($data, "page_size") ? SdkClient::intValue($data->page_size) : SdkNotGiven::Value),
+            page: (property_exists($data, "page") && $data->page !== null ? SdkClient::intValue($data->page) : SdkNotGiven::Value),
+            pageSize: (property_exists($data, "page_size") && $data->page_size !== null ? SdkClient::intValue($data->page_size) : SdkNotGiven::Value),
             previousPageUri: (property_exists($data, "previous_page_uri") ? ($data->previous_page_uri === null ? null : SdkClient::stringValue($data->previous_page_uri)) : SdkNotGiven::Value),
-            start: (property_exists($data, "start") ? SdkClient::intValue($data->start) : SdkNotGiven::Value),
-            uri: (property_exists($data, "uri") ? SdkClient::stringValue($data->uri) : SdkNotGiven::Value),
-            availablePhoneNumbers: (property_exists($data, "available_phone_numbers") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal::class), SdkClient::arrayValue($data->available_phone_numbers))) : SdkNotGiven::Value),
+            start: (property_exists($data, "start") && $data->start !== null ? SdkClient::intValue($data->start) : SdkNotGiven::Value),
+            uri: (property_exists($data, "uri") && $data->uri !== null ? SdkClient::stringValue($data->uri) : SdkNotGiven::Value),
+            availablePhoneNumbers: (property_exists($data, "available_phone_numbers") && $data->available_phone_numbers !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal::class), SdkClient::arrayValue($data->available_phone_numbers))) : SdkNotGiven::Value),
         );
     }
 }
@@ -264,15 +264,15 @@ class ListAvailablePhoneNumbersMachineToMachineResponse implements \JsonSerializ
     public static function fromObject(object $data): self
     {
         return new self(
-            end: (property_exists($data, "end") ? SdkClient::intValue($data->end) : SdkNotGiven::Value),
-            firstPageUri: (property_exists($data, "first_page_uri") ? SdkClient::stringValue($data->first_page_uri) : SdkNotGiven::Value),
+            end: (property_exists($data, "end") && $data->end !== null ? SdkClient::intValue($data->end) : SdkNotGiven::Value),
+            firstPageUri: (property_exists($data, "first_page_uri") && $data->first_page_uri !== null ? SdkClient::stringValue($data->first_page_uri) : SdkNotGiven::Value),
             nextPageUri: (property_exists($data, "next_page_uri") ? ($data->next_page_uri === null ? null : SdkClient::stringValue($data->next_page_uri)) : SdkNotGiven::Value),
-            page: (property_exists($data, "page") ? SdkClient::intValue($data->page) : SdkNotGiven::Value),
-            pageSize: (property_exists($data, "page_size") ? SdkClient::intValue($data->page_size) : SdkNotGiven::Value),
+            page: (property_exists($data, "page") && $data->page !== null ? SdkClient::intValue($data->page) : SdkNotGiven::Value),
+            pageSize: (property_exists($data, "page_size") && $data->page_size !== null ? SdkClient::intValue($data->page_size) : SdkNotGiven::Value),
             previousPageUri: (property_exists($data, "previous_page_uri") ? ($data->previous_page_uri === null ? null : SdkClient::stringValue($data->previous_page_uri)) : SdkNotGiven::Value),
-            start: (property_exists($data, "start") ? SdkClient::intValue($data->start) : SdkNotGiven::Value),
-            uri: (property_exists($data, "uri") ? SdkClient::stringValue($data->uri) : SdkNotGiven::Value),
-            availablePhoneNumbers: (property_exists($data, "available_phone_numbers") ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberMachineToMachine::class), SdkClient::arrayValue($data->available_phone_numbers))) : SdkNotGiven::Value),
+            start: (property_exists($data, "start") && $data->start !== null ? SdkClient::intValue($data->start) : SdkNotGiven::Value),
+            uri: (property_exists($data, "uri") && $data->uri !== null ? SdkClient::stringValue($data->uri) : SdkNotGiven::Value),
+            availablePhoneNumbers: (property_exists($data, "available_phone_numbers") && $data->available_phone_numbers !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberMachineToMachine::class), SdkClient::arrayValue($data->available_phone_numbers))) : SdkNotGiven::Value),
         );
     }
 }

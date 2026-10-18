@@ -363,7 +363,7 @@ class ApiV2010AccountAddressDependentPhoneNumber implements \JsonSerializable
             smsFallbackUrl: (property_exists($data, "sms_fallback_url") ? ($data->sms_fallback_url === null ? null : SdkClient::stringValue($data->sms_fallback_url)) : SdkNotGiven::Value),
             smsMethod: (property_exists($data, "sms_method") ? ($data->sms_method === null ? null : SdkClient::hydrateStringEnumOrString($data->sms_method, ApiV2010AccountAddressDependentPhoneNumberSmsMethodEnum::class)) : SdkNotGiven::Value),
             smsUrl: (property_exists($data, "sms_url") ? ($data->sms_url === null ? null : SdkClient::stringValue($data->sms_url)) : SdkNotGiven::Value),
-            addressRequirements: (property_exists($data, "address_requirements") ? SdkClient::hydrateStringEnumOrString($data->address_requirements, DependentPhoneNumberEnumAddressRequirement::class) : SdkNotGiven::Value),
+            addressRequirements: (property_exists($data, "address_requirements") && $data->address_requirements !== null ? SdkClient::hydrateStringEnumOrString($data->address_requirements, DependentPhoneNumberEnumAddressRequirement::class) : SdkNotGiven::Value),
             capabilities: (property_exists($data, "capabilities") ? ($data->capabilities === null ? null : $data->capabilities) : SdkNotGiven::Value),
             statusCallback: (property_exists($data, "status_callback") ? ($data->status_callback === null ? null : SdkClient::stringValue($data->status_callback)) : SdkNotGiven::Value),
             statusCallbackMethod: (property_exists($data, "status_callback_method") ? ($data->status_callback_method === null ? null : SdkClient::hydrateStringEnumOrString($data->status_callback_method, ApiV2010AccountAddressDependentPhoneNumberStatusCallbackMethodEnum::class)) : SdkNotGiven::Value),
@@ -371,7 +371,7 @@ class ApiV2010AccountAddressDependentPhoneNumber implements \JsonSerializable
             smsApplicationSid: (property_exists($data, "sms_application_sid") ? ($data->sms_application_sid === null ? null : SdkClient::stringValue($data->sms_application_sid)) : SdkNotGiven::Value),
             voiceApplicationSid: (property_exists($data, "voice_application_sid") ? ($data->voice_application_sid === null ? null : SdkClient::stringValue($data->voice_application_sid)) : SdkNotGiven::Value),
             trunkSid: (property_exists($data, "trunk_sid") ? ($data->trunk_sid === null ? null : SdkClient::stringValue($data->trunk_sid)) : SdkNotGiven::Value),
-            emergencyStatus: (property_exists($data, "emergency_status") ? SdkClient::hydrateStringEnumOrString($data->emergency_status, DependentPhoneNumberEnumEmergencyStatus::class) : SdkNotGiven::Value),
+            emergencyStatus: (property_exists($data, "emergency_status") && $data->emergency_status !== null ? SdkClient::hydrateStringEnumOrString($data->emergency_status, DependentPhoneNumberEnumEmergencyStatus::class) : SdkNotGiven::Value),
             emergencyAddressSid: (property_exists($data, "emergency_address_sid") ? ($data->emergency_address_sid === null ? null : SdkClient::stringValue($data->emergency_address_sid)) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
         );

@@ -9,6 +9,24 @@ namespace octridev_twilio;
 
 trait SdkClientMethodsPart6
 {
+    private static function decode(string $body, string $decoder, ?string $returnType): mixed
+    {
+        if ($decoder === 'empty') {
+            return null;
+        }
+        if ($decoder === 'bytes' || $decoder === 'text') {
+            return $body;
+        }
+        $decoded = json_decode($body, false, 512, JSON_THROW_ON_ERROR | JSON_BIGINT_AS_STRING);
+        if ($returnType === null) {
+            return $decoded;
+        }
+        if (is_subclass_of($returnType, SdkWireEnum::class)) {
+            return self::hydrateEnum($decoded, $returnType);
+        }
+        return self::hydrateDynamicClass($decoded ?? (object) [], $returnType);
+    }
+
     private static function statusText(int $status): string
     {
         return match ($status) {
