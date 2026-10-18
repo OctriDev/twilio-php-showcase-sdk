@@ -110,7 +110,7 @@ class ApiV2010AccountMessageMessageFeedback implements \JsonSerializable
         return new self(
             accountSid: (property_exists($data, "account_sid") ? ($data->account_sid === null ? null : SdkClient::stringValue($data->account_sid)) : SdkNotGiven::Value),
             messageSid: (property_exists($data, "message_sid") ? ($data->message_sid === null ? null : SdkClient::stringValue($data->message_sid)) : SdkNotGiven::Value),
-            outcome: (property_exists($data, "outcome") ? SdkClient::hydrateStringEnumOrString($data->outcome, MessageFeedbackEnumOutcome::class) : SdkNotGiven::Value),
+            outcome: (property_exists($data, "outcome") && $data->outcome !== null ? SdkClient::hydrateStringEnumOrString($data->outcome, MessageFeedbackEnumOutcome::class) : SdkNotGiven::Value),
             dateCreated: (property_exists($data, "date_created") ? ($data->date_created === null ? null : SdkClient::stringValue($data->date_created)) : SdkNotGiven::Value),
             dateUpdated: (property_exists($data, "date_updated") ? ($data->date_updated === null ? null : SdkClient::stringValue($data->date_updated)) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),

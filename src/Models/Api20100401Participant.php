@@ -228,7 +228,7 @@ class ApiV2010AccountConferenceParticipant implements \JsonSerializable
             muted: (property_exists($data, "muted") ? ($data->muted === null ? null : SdkClient::boolValue($data->muted)) : SdkNotGiven::Value),
             hold: (property_exists($data, "hold") ? ($data->hold === null ? null : SdkClient::boolValue($data->hold)) : SdkNotGiven::Value),
             startConferenceOnEnter: (property_exists($data, "start_conference_on_enter") ? ($data->start_conference_on_enter === null ? null : SdkClient::boolValue($data->start_conference_on_enter)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, ParticipantEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, ParticipantEnumStatus::class) : SdkNotGiven::Value),
             queueTime: (property_exists($data, "queue_time") ? ($data->queue_time === null ? null : SdkClient::stringValue($data->queue_time)) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
         );

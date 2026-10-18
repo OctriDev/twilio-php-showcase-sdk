@@ -124,7 +124,7 @@ class ApiV2010AccountCallSiprec implements \JsonSerializable
             accountSid: (property_exists($data, "account_sid") ? ($data->account_sid === null ? null : SdkClient::stringValue($data->account_sid)) : SdkNotGiven::Value),
             callSid: (property_exists($data, "call_sid") ? ($data->call_sid === null ? null : SdkClient::stringValue($data->call_sid)) : SdkNotGiven::Value),
             name: (property_exists($data, "name") ? ($data->name === null ? null : SdkClient::stringValue($data->name)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, SiprecEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, SiprecEnumStatus::class) : SdkNotGiven::Value),
             dateUpdated: (property_exists($data, "date_updated") ? ($data->date_updated === null ? null : SdkClient::stringValue($data->date_updated)) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
         );

@@ -84,10 +84,10 @@ class ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoipCapabili
     public static function fromObject(object $data): self
     {
         return new self(
-            mms: (property_exists($data, "mms") ? SdkClient::boolValue($data->mms) : SdkNotGiven::Value),
-            sms: (property_exists($data, "sms") ? SdkClient::boolValue($data->sms) : SdkNotGiven::Value),
-            voice: (property_exists($data, "voice") ? SdkClient::boolValue($data->voice) : SdkNotGiven::Value),
-            fax: (property_exists($data, "fax") ? SdkClient::boolValue($data->fax) : SdkNotGiven::Value),
+            mms: (property_exists($data, "mms") && $data->mms !== null ? SdkClient::boolValue($data->mms) : SdkNotGiven::Value),
+            sms: (property_exists($data, "sms") && $data->sms !== null ? SdkClient::boolValue($data->sms) : SdkNotGiven::Value),
+            voice: (property_exists($data, "voice") && $data->voice !== null ? SdkClient::boolValue($data->voice) : SdkNotGiven::Value),
+            fax: (property_exists($data, "fax") && $data->fax !== null ? SdkClient::boolValue($data->fax) : SdkNotGiven::Value),
         );
     }
 }

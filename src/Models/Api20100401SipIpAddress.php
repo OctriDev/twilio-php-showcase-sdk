@@ -148,7 +148,7 @@ class ApiV2010AccountSipSipIpAccessControlListSipIpAddress implements \JsonSeria
             accountSid: (property_exists($data, "account_sid") ? ($data->account_sid === null ? null : SdkClient::stringValue($data->account_sid)) : SdkNotGiven::Value),
             friendlyName: (property_exists($data, "friendly_name") ? ($data->friendly_name === null ? null : SdkClient::stringValue($data->friendly_name)) : SdkNotGiven::Value),
             ipAddress: (property_exists($data, "ip_address") ? ($data->ip_address === null ? null : SdkClient::stringValue($data->ip_address)) : SdkNotGiven::Value),
-            cidrPrefixLength: (property_exists($data, "cidr_prefix_length") ? SdkClient::intValue($data->cidr_prefix_length) : SdkNotGiven::Value),
+            cidrPrefixLength: (property_exists($data, "cidr_prefix_length") && $data->cidr_prefix_length !== null ? SdkClient::intValue($data->cidr_prefix_length) : SdkNotGiven::Value),
             ipAccessControlListSid: (property_exists($data, "ip_access_control_list_sid") ? ($data->ip_access_control_list_sid === null ? null : SdkClient::stringValue($data->ip_access_control_list_sid)) : SdkNotGiven::Value),
             dateCreated: (property_exists($data, "date_created") ? ($data->date_created === null ? null : SdkClient::stringValue($data->date_created)) : SdkNotGiven::Value),
             dateUpdated: (property_exists($data, "date_updated") ? ($data->date_updated === null ? null : SdkClient::stringValue($data->date_updated)) : SdkNotGiven::Value),

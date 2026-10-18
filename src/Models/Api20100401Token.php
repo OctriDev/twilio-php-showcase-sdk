@@ -84,10 +84,10 @@ class ApiV2010AccountTokenIceServersItem implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            credential: (property_exists($data, "credential") ? SdkClient::stringValue($data->credential) : SdkNotGiven::Value),
-            username: (property_exists($data, "username") ? SdkClient::stringValue($data->username) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-            urls: (property_exists($data, "urls") ? SdkClient::stringValue($data->urls) : SdkNotGiven::Value),
+            credential: (property_exists($data, "credential") && $data->credential !== null ? SdkClient::stringValue($data->credential) : SdkNotGiven::Value),
+            username: (property_exists($data, "username") && $data->username !== null ? SdkClient::stringValue($data->username) : SdkNotGiven::Value),
+            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
+            urls: (property_exists($data, "urls") && $data->urls !== null ? SdkClient::stringValue($data->urls) : SdkNotGiven::Value),
         );
     }
 }

@@ -265,9 +265,9 @@ class ApiV2010AccountCallCallRecording implements \JsonSerializable
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
             encryptionDetails: (property_exists($data, "encryption_details") ? ($data->encryption_details === null ? null : $data->encryption_details) : SdkNotGiven::Value),
             priceUnit: (property_exists($data, "price_unit") ? ($data->price_unit === null ? null : SdkClient::stringValue($data->price_unit)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, CallRecordingEnumStatus::class) : SdkNotGiven::Value),
-            channels: (property_exists($data, "channels") ? SdkClient::intValue($data->channels) : SdkNotGiven::Value),
-            source: (property_exists($data, "source") ? SdkClient::hydrateStringEnumOrString($data->source, CallRecordingEnumSource::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, CallRecordingEnumStatus::class) : SdkNotGiven::Value),
+            channels: (property_exists($data, "channels") && $data->channels !== null ? SdkClient::intValue($data->channels) : SdkNotGiven::Value),
+            source: (property_exists($data, "source") && $data->source !== null ? SdkClient::hydrateStringEnumOrString($data->source, CallRecordingEnumSource::class) : SdkNotGiven::Value),
             errorCode: (property_exists($data, "error_code") ? ($data->error_code === null ? null : SdkClient::intValue($data->error_code)) : SdkNotGiven::Value),
             track: (property_exists($data, "track") ? ($data->track === null ? null : SdkClient::stringValue($data->track)) : SdkNotGiven::Value),
         );

@@ -60,8 +60,8 @@ class ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem impleme
     public static function fromObject(object $data): self
     {
         return new self(
-            attemptSid: (property_exists($data, "attempt_sid") ? SdkClient::stringValue($data->attempt_sid) : SdkNotGiven::Value),
-            time: (property_exists($data, "time") ? SdkClient::stringValue($data->time) : SdkNotGiven::Value),
+            attemptSid: (property_exists($data, "attempt_sid") && $data->attempt_sid !== null ? SdkClient::stringValue($data->attempt_sid) : SdkNotGiven::Value),
+            time: (property_exists($data, "time") && $data->time !== null ? SdkClient::stringValue($data->time) : SdkNotGiven::Value),
         );
     }
 }

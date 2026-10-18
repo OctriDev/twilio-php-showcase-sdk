@@ -201,7 +201,7 @@ class ApiV2010AccountRecordingRecordingTranscription implements \JsonSerializabl
             priceUnit: (property_exists($data, "price_unit") ? ($data->price_unit === null ? null : SdkClient::stringValue($data->price_unit)) : SdkNotGiven::Value),
             recordingSid: (property_exists($data, "recording_sid") ? ($data->recording_sid === null ? null : SdkClient::stringValue($data->recording_sid)) : SdkNotGiven::Value),
             sid: (property_exists($data, "sid") ? ($data->sid === null ? null : SdkClient::stringValue($data->sid)) : SdkNotGiven::Value),
-            status: (property_exists($data, "status") ? SdkClient::hydrateStringEnumOrString($data->status, RecordingTranscriptionEnumStatus::class) : SdkNotGiven::Value),
+            status: (property_exists($data, "status") && $data->status !== null ? SdkClient::hydrateStringEnumOrString($data->status, RecordingTranscriptionEnumStatus::class) : SdkNotGiven::Value),
             transcriptionText: (property_exists($data, "transcription_text") ? ($data->transcription_text === null ? null : SdkClient::stringValue($data->transcription_text)) : SdkNotGiven::Value),
             type: (property_exists($data, "type") ? ($data->type === null ? null : SdkClient::stringValue($data->type)) : SdkNotGiven::Value),
             uri: (property_exists($data, "uri") ? ($data->uri === null ? null : SdkClient::stringValue($data->uri)) : SdkNotGiven::Value),
