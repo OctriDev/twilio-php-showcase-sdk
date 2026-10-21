@@ -243,6 +243,6 @@ class RecordingsAddOnResultsPayloads
         Validation::validateLength('PayloadSid', $payloadSid, min: 34, max: 34);
         Validation::validatePattern('PayloadSid', $payloadSid, '^XH[0-9a-fA-F]{32}$');
 
-        return SdkClient::request('GET', "/2010-04-01/Accounts/" . SdkClient::encodePathSegment($accountSid) . "/Recordings/" . SdkClient::encodePathSegment($referenceSid) . "/AddOnResults/" . SdkClient::encodePathSegment($addOnResultSid) . "/Payloads/" . SdkClient::encodePathSegment($payloadSid) . "/Data.json", $clientConfig, decoder: 'empty', operationId: 'fetchRecordingsAddOnResultsPayloadsData', requestOptions: $requestOptions, errors: [307 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadRecordingAddOnResultPayloadData::class)])->data;
+        return SdkClient::request('GET', "/2010-04-01/Accounts/" . SdkClient::encodePathSegment($accountSid) . "/Recordings/" . SdkClient::encodePathSegment($referenceSid) . "/AddOnResults/" . SdkClient::encodePathSegment($addOnResultSid) . "/Payloads/" . SdkClient::encodePathSegment($payloadSid) . "/Data.json", $clientConfig, decoder: 'empty', operationId: 'fetchRecordingsAddOnResultsPayloadsData', requestOptions: $requestOptions, errors: [307 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadRecordingAddOnResultPayloadData::class)])->data;
     }
 }
