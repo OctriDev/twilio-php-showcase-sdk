@@ -9,5 +9,5 @@ namespace octridev_twilio;
 
 class Calls
 {
-    use CallsMethodsPart1;
+    use CallsMethods;
 }

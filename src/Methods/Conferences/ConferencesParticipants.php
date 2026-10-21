@@ -9,5 +9,5 @@ namespace octridev_twilio;
 
 class ConferencesParticipants
 {
-    use ConferencesParticipantsMethodsPart1;
+    use ConferencesParticipantsMethods;
 }

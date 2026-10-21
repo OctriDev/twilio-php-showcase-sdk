@@ -9,7 +9,9 @@ namespace octridev_twilio;
 
 class IncomingPhoneNumbers
 {
-    use IncomingPhoneNumbersMethodsPart1;
-    use IncomingPhoneNumbersMethodsPart2;
-    use IncomingPhoneNumbersMethodsPart3;
+    use IncomingPhoneNumbersMethods;
+    use IncomingPhoneNumbers20100401Methods;
+    use IncomingPhoneNumbersLocalJsonMethods;
+    use IncomingPhoneNumbersMobileJsonMethods;
+    use IncomingPhoneNumbersTollFreeJsonMethods;
 }

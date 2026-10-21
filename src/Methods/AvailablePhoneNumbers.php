@@ -9,6 +9,13 @@ namespace octridev_twilio;
 
 class AvailablePhoneNumbers
 {
-    use AvailablePhoneNumbersMethodsPart1;
-    use AvailablePhoneNumbersMethodsPart2;
+    use AvailablePhoneNumbers20100401Methods;
+    use AvailablePhoneNumbersMethods;
+    use AvailablePhoneNumbersLocalJsonMethods;
+    use AvailablePhoneNumbersMachineToMachineJsonMethods;
+    use AvailablePhoneNumbersMobileJsonMethods;
+    use AvailablePhoneNumbersNationalJsonMethods;
+    use AvailablePhoneNumbersSharedCostJsonMethods;
+    use AvailablePhoneNumbersTollFreeJsonMethods;
+    use AvailablePhoneNumbersVoipJsonMethods;
 }

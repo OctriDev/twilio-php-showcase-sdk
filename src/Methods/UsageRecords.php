@@ -9,6 +9,13 @@ namespace octridev_twilio;
 
 class UsageRecords
 {
-    use UsageRecordsMethodsPart1;
-    use UsageRecordsMethodsPart2;
+    use UsageRecordsJsonMethods;
+    use UsageRecordsAllTimeJsonMethods;
+    use UsageRecordsDailyJsonMethods;
+    use UsageRecordsLastMonthJsonMethods;
+    use UsageRecordsMonthlyJsonMethods;
+    use UsageRecordsThisMonthJsonMethods;
+    use UsageRecordsTodayJsonMethods;
+    use UsageRecordsYearlyJsonMethods;
+    use UsageRecordsYesterdayJsonMethods;
 }
