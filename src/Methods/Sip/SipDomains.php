@@ -9,5 +9,5 @@ namespace octridev_twilio;
 
 class SipDomains
 {
-    use SipDomainsMethodsPart1;
+    use SipDomainsMethods;
 }

@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace octridev_twilio;
 
-final readonly class CreateCallsUserDefinedMessageSubscriptionsMethod implements SdkOpenEnum
+final readonly class CreateCallUserDefinedMessageSubscriptionMethod implements SdkOpenEnum
 {
     public const GET = "GET";
     public const POST = "POST";
@@ -30,10 +30,10 @@ class CallsUserDefinedMessageSubscriptions
      * @param string $callSid
      * @param string $callback
      * @param string|SdkNotGiven $idempotencyKey
-     * @param CreateCallsUserDefinedMessageSubscriptionsMethod|SdkNotGiven $method
+     * @param CreateCallUserDefinedMessageSubscriptionMethod|SdkNotGiven $method
      * @return ApiV2010AccountCallUserDefinedMessageSubscription
      */
-    public static function createCallsUserDefinedMessageSubscriptions(ClientConfig $clientConfig, string $accountSid, string $callSid, string $callback, string|SdkNotGiven $idempotencyKey = SdkNotGiven::Value, CreateCallsUserDefinedMessageSubscriptionsMethod|SdkNotGiven $method = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ApiV2010AccountCallUserDefinedMessageSubscription
+    public static function createCallUserDefinedMessageSubscription(ClientConfig $clientConfig, string $accountSid, string $callSid, string $callback, string|SdkNotGiven $idempotencyKey = SdkNotGiven::Value, CreateCallUserDefinedMessageSubscriptionMethod|SdkNotGiven $method = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ApiV2010AccountCallUserDefinedMessageSubscription
     {
 
         Validation::validateLength('AccountSid', $accountSid, min: 34, max: 34);
@@ -44,7 +44,7 @@ class CallsUserDefinedMessageSubscriptions
 
         Validation::validateUri('Callback', $callback);
 
-        $sdkResponse = SdkClient::request('POST', "/2010-04-01/Accounts/" . SdkClient::encodePathSegment($accountSid) . "/Calls/" . SdkClient::encodePathSegment($callSid) . "/UserDefinedMessageSubscriptions.json", $clientConfig, body: ['Callback' => $callback, 'IdempotencyKey' => $idempotencyKey, 'Method' => $method], contentType: 'application/x-www-form-urlencoded', returnType: ApiV2010AccountCallUserDefinedMessageSubscription::class, decoder: 'json', operationId: 'createCallsUserDefinedMessageSubscriptions', requestOptions: $requestOptions);
+        $sdkResponse = SdkClient::request('POST', "/2010-04-01/Accounts/" . SdkClient::encodePathSegment($accountSid) . "/Calls/" . SdkClient::encodePathSegment($callSid) . "/UserDefinedMessageSubscriptions.json", $clientConfig, body: ['Callback' => $callback, 'IdempotencyKey' => $idempotencyKey, 'Method' => $method], contentType: 'application/x-www-form-urlencoded', returnType: ApiV2010AccountCallUserDefinedMessageSubscription::class, decoder: 'json', operationId: 'createCallUserDefinedMessageSubscription', requestOptions: $requestOptions);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ApiV2010AccountCallUserDefinedMessageSubscription::class));
     }
 

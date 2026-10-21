@@ -9,5 +9,5 @@ namespace octridev_twilio;
 
 class Applications
 {
-    use ApplicationsMethodsPart1;
+    use ApplicationsMethods;
 }

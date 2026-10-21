@@ -23,12 +23,12 @@ class CallsUserDefinedMessageSubscriptionsNamespace
      * @param string $callSid
      * @param string $callback
      * @param string|SdkNotGiven $idempotencyKey
-     * @param CreateCallsUserDefinedMessageSubscriptionsMethod|SdkNotGiven $method
+     * @param CreateCallUserDefinedMessageSubscriptionMethod|SdkNotGiven $method
      * @return ApiV2010AccountCallUserDefinedMessageSubscription
      */
-    public function create(string $accountSid, string $callSid, string $callback, string|SdkNotGiven $idempotencyKey = SdkNotGiven::Value, CreateCallsUserDefinedMessageSubscriptionsMethod|SdkNotGiven $method = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ApiV2010AccountCallUserDefinedMessageSubscription
+    public function create(string $accountSid, string $callSid, string $callback, string|SdkNotGiven $idempotencyKey = SdkNotGiven::Value, CreateCallUserDefinedMessageSubscriptionMethod|SdkNotGiven $method = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ApiV2010AccountCallUserDefinedMessageSubscription
     {
-        return CallsUserDefinedMessageSubscriptions::createCallsUserDefinedMessageSubscriptions($this->clientConfig, $accountSid, $callSid, $callback, $idempotencyKey, $method, $requestOptions);
+        return CallsUserDefinedMessageSubscriptions::createCallUserDefinedMessageSubscription($this->clientConfig, $accountSid, $callSid, $callback, $idempotencyKey, $method, $requestOptions);
     }
     /**
      * Delete a specific User Defined Message Subscription.
